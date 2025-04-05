@@ -1,0 +1,24 @@
+#   teleport
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+services:
+  teleport-server:
+    image: public.ecr.aws/gravitational/teleport-distroless-debug:17.3.3
+    ports:
+      - "4023:3023"
+      - "4024:3024"
+      - "4025:3025"
+      - "4080:3080"
+    volumes:
+      - ./config:/etc/teleport
+      - ./data:/var/lib/teleport
+      - ./certs:/mnt/shared/certs
+    healthcheck:
+      test: tctl status
+      interval: 2s
+      timeout: 2s
+      retries: 3
+      start_period: 5s

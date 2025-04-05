@@ -1,0 +1,27 @@
+# 
+#  * mosquitto 
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+version: "3.8"
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: unless-stopped
+    #ports:
+    #  - "1883:1883"   # MQTT port
+    #  - "9001:9001"   # WebSocket port
+    volumes:
+      - ./mosquitto/config:/mosquitto/config # default pass: admin:admin
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    networks:
+      - mqtt_network
+
+networks:
+  mqtt_network:
+    driver: bridge

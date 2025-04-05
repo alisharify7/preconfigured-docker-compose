@@ -1,0 +1,6 @@
+mkdir mysql-config
+echo "[mysqld]
+max_connections = 200
+innodb_buffer_pool_size = 1G
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci" > mysql-config/my.cnf

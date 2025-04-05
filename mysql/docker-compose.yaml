@@ -1,0 +1,29 @@
+# 
+#  * mysql 
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0  
+    container_name: mysql_db
+    hostname: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  
+      MYSQL_DATABASE: mydatabase 
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword  
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql  
+      - ./mysql-config:/etc/mysql/conf.d
+
+volumes:
+  mysql-data:

@@ -1,0 +1,45 @@
+# 
+#  * redis + redisUI 
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    volumes:
+      - redis_data:/data
+#    environment:
+#      - REDIS_PASSWORD=internal_password
+    networks:
+      - redis_network
+
+  redis-commander:
+    image: docker.arvancloud.ir/rediscommander/redis-commander:latest
+    container_name: redis-ui
+    #ports:
+    #  - "8081:8081"
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+ #     - REDIS_PASSWORD=internal_password
+    depends_on:
+      - redis
+    networks:
+      - redis_network
+      - nginx_proxy
+
+volumes:
+  redis_data:
+
+networks:
+  nginx_proxy:
+    external: true
+    name: nginx-proxy-manager_default
+  redis_network:
