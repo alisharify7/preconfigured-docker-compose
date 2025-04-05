@@ -1,4 +1,5 @@
 # Docker Compose Collection 🐳
+<img src="./docs/docker.avif">
 
 Welcome to the **Docker Compose Collection** repository! This repository contains a set of preconfigured Docker Compose files to help you quickly spin up various services with minimal effort. Whether you're developing locally, testing, or deploying services, these configurations are designed to save you time and hassle.
 
