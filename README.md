@@ -18,8 +18,9 @@ This repository includes Docker Compose configurations for the following service
 - **Development Tools**:
     -   
 - **Message Brokers**:
-  - Redis
-  - Mosquitto
+  - Redis + redisUI
+  - Mosquitto MQTT
+  - RabbitMQ
 - **Monitoring & Logging**:
   - teleport
 - **Other Services**:
@@ -39,8 +40,6 @@ Before using these Docker Compose files, ensure you have the following installed
 
 ---
 
-
----
 
 ## 🛠 **Customization**
 
