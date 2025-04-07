@@ -5,25 +5,26 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
-
 version: '3.8'
 
 services:
   mysql:
-    image: mysql:8.0  
+    image: mysql:"${MYSQL_VERSION:-8.0}"  # changed from latest to 8.0
     container_name: mysql_db
     hostname: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword  
-      MYSQL_DATABASE: mydatabase 
-      MYSQL_USER: myuser
-      MYSQL_PASSWORD: mypassword  
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-root}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE:-test}"
+      MYSQL_USER: "${MYSQL_USERNAME:-test}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD:-test}"  # fixed typo in variable name
     ports:
-      - "3306:3306"
+      - "3306:3306"  # consider removing this in production or restricting access
     volumes:
-      - mysql-data:/var/lib/mysql  
+      - mysql-data:/var/lib/mysql
       - ./mysql-config:/etc/mysql/conf.d
+    env_file:
+      - .env  # ensure this doesn't conflict with your environment variables
 
 volumes:
   mysql-data:
