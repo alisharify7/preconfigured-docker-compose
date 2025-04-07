@@ -11,16 +11,22 @@ version: '3.3'
 services:
   mssql:
     container_name: sql-server
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    image: mcr.microsoft.com/mssql/server:${MSSQL_TAG:-2022-latest}
     restart: always
     environment:
-      MSSQL_PID: "Developer"
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "StrongPass@123"
+      MSSQL_PID: "${MSSQL_EDITION:-Developer}"
+      ACCEPT_EULA: "${ACCEPT_EULA:-Y}"
+      SA_PASSWORD: "${SA_PASSWORD:-StrongPass@123}"
+      MSSQL_TCP_PORT: "${MSSQL_PORT:-1433}"
     ports:
-      - 1433:1433
+      - "${MSSQL_PORT:-1433}:${MSSQL_PORT:-1433}"
     volumes:
-      - my-volume:/var/opt/mssql
-      
+      - sql_data:/var/opt/mssql
+    networks:
+      - sql_network
+
 volumes:
-  my-volume:
+  sql_data:
+
+networks:
+  sql_network:
