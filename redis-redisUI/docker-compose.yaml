@@ -5,35 +5,41 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
-
 version: '3.8'
 
 services:
   redis:
-    image: redis:latest
+    image: redis:${REDIS_TAG:-latest}
     container_name: redis
     restart: always
     volumes:
       - redis_data:/data
-#    environment:
-#      - REDIS_PASSWORD=internal_password
+    environment:
+      - ${REDIS_PASSWORD:+REDIS_PASSWORD=${REDIS_PASSWORD}}
+      - ${REDIS_PORT:+REDIS_PORT=${REDIS_PORT}}
     networks:
       - redis_network
+    ports:
+      - "${REDIS_PORT:-6379}:${REDIS_PORT:-6379}"
 
   redis-commander:
-    image: docker.arvancloud.ir/rediscommander/redis-commander:latest
+    image: docker.arvancloud.ir/rediscommander/redis-commander:${REDIS_COMMANDER_TAG:-latest}
     container_name: redis-ui
-    #ports:
-    #  - "8081:8081"
     restart: always
     environment:
-      - REDIS_HOSTS=local:redis:6379
- #     - REDIS_PASSWORD=internal_password
+      - REDIS_HOSTS=local:redis:${REDIS_PORT:-6379}
+      - ${REDIS_PASSWORD:+REDIS_PASSWORD=${REDIS_PASSWORD}}
+      - ${REDIS_COMMANDER_PORT:+REDIS_COMMANDER_PORT=${REDIS_COMMANDER_PORT}}
+      - ${REDIS_COMMANDER_HTTP_PORT:+HTTP_PORT=${REDIS_COMMANDER_HTTP_PORT}}
+      - ${REDIS_COMMANDER_HTTP_AUTH_USER:+HTTP_USER=${REDIS_COMMANDER_HTTP_AUTH_USER}}
+      - ${REDIS_COMMANDER_HTTP_AUTH_PASSWORD:+HTTP_PASSWORD=${REDIS_COMMANDER_HTTP_AUTH_PASSWORD}}
     depends_on:
       - redis
     networks:
       - redis_network
       - nginx_proxy
+    ports:
+      - "${REDIS_COMMANDER_HTTP_PORT:-8081}:${REDIS_COMMANDER_HTTP_PORT:-8081}"
 
 volumes:
   redis_data:
