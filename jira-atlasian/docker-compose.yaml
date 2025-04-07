@@ -9,9 +9,10 @@ version: '3'
 services:
   jira:
     container_name: jira
+    hostname: jira
     depends_on:
       - postgresql
-    image: atlassian/jira-software:8.5.4
+    image: 'atlassian/jira-software:${JIRA_TAG_VERSION:-latest}'
     networks:
       - jiranet
     volumes:
@@ -30,7 +31,8 @@ services:
 
   postgresql:
     container_name: postgres
-    image: postgres:9.6
+    hostname: postgres
+    image: 'postgres:${POSTGRES_TAG_VERSION:-latest}'
     expose:
       - '5432'
     networks:
@@ -38,10 +40,10 @@ services:
     volumes:
       - postgresqldata:/var/lib/postgresql/data
     environment:
-      - 'POSTGRES_USER=jiradbuser'
+      - 'POSTGRES_USER=${POSTGRES_USER:-jiradbuser}'
       # CHANGE THE PASSWORD!
-      - 'POSTGRES_PASSWORD=admin'
-      - 'POSTGRES_DB=jiradb'
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-POSTGRES_PASSWORD}'
+      - 'POSTGRES_DB=${POSTGRES_DB:-POSTGRES_DB}'
       - 'POSTGRES_ENCODING=UNICODE'
       - 'POSTGRES_COLLATE=C'
       - 'POSTGRES_COLLATE_TYPE=C'
