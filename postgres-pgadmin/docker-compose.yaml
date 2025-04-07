@@ -5,38 +5,41 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
+
 services:
-  postgres_live_database:
-    image: 'docker.io/postgres:latest' # replace latest
+  postgres_database:
+    image: 'docker.io/postgres:${POSTGRES_TAG_VERSION:-latest}' # replace latest
     container_name: postgres_db
     hostname: postgres_db
     restart: always
     environment:
-      POSTGRES_PASSWORD: "admin" # replace with .env
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-root}" # replace with .env
     networks:
-      - nginx_proxy
+      - internal_proxy
     volumes:
       - pg-data:/var/lib/postgresql/data/
+    env_file:
+      - .env
 
   postgres_pgadmin:
+    image: 'docker.io/dpage/pgadmin4:${PGADMIN_TAG_VERSION:-latest}' # replace latest
     container_name: postgres_pgadmin
-    image: 'docker.io/dpage/pgadmin4:latest' # replace latest
+    hostname: postgres_pgadmin
     restart: always
     environment:
-      PGADMIN_DEFAULT_EMAIL: "admin@admin.ir" # TODO: read from .env 
-      PGADMIN_DEFAULT_PASSWORD: "hi:)"
-      PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False' 
+      PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL:-default@example.com}" # TODO: read from .env
+      PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD:-password}"
+      PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: 'False'
       PGADMIN_CONFIG_WTF_CSRF_ENABLED: 'False'
     networks:
-      - nginx_proxy
+      - internal_proxy
     volumes:
       - pgadmin-data:/var/lib/pgadmin/
-
+    env_file:
+      - .env
 volumes:
   pg-data:
   pgadmin-data:
 
 networks:
-  nginx_proxy:
-    external: true
-    name: nginx-proxy-manager_default
+  internal_proxy:
