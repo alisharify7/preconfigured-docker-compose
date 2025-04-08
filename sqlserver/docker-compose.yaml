@@ -6,8 +6,6 @@
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
 
-version: '3.3'
-
 services:
   mssql:
     container_name: sql-server

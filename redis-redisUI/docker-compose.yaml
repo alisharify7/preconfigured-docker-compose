@@ -5,8 +5,6 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
-version: '3.8'
-
 services:
   redis:
     image: redis:${REDIS_TAG:-latest}

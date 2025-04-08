@@ -4,7 +4,6 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
-version: '3'
 
 services:
   jira:
