@@ -5,11 +5,10 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
-version: '3.8'
 
 services:
   mysql:
-    image: mysql:"${MYSQL_VERSION:-8.0}"  # changed from latest to 8.0
+    image: mysql:${MYSQL_VERSION:-8.0}  # changed from latest to 8.0
     container_name: mysql_db
     hostname: mysql_db
     restart: always
