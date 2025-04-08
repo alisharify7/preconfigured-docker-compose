@@ -5,16 +5,16 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
-version: "3.8"
 
 services:
   mosquitto:
-    image: eclipse-mosquitto:latest
+    image: eclipse-mosquitto:${MOSQUITOO_TAG_VERSION:-latest}
     container_name: mosquitto
+    hostname: mosquitto
     restart: unless-stopped
-    #ports:
-    #  - "1883:1883"   # MQTT port
-    #  - "9001:9001"   # WebSocket port
+    ports:
+      - "1883:1883"   # MQTT port
+      - "9001:9001"   # WebSocket port
     volumes:
       - ./mosquitto/config:/mosquitto/config # default pass: admin:admin
       - ./mosquitto/data:/mosquitto/data
