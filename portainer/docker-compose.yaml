@@ -1,0 +1,32 @@
+#
+#  * portainer
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+
+services:
+  portainer:
+    image: portainer/portainer-ce:${PORTAINER_TAG_VERSION:-latest}
+    container_name: portainer
+    hostname: portainer
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "9000:9000"   # Web UI
+      - "9443:9443"   # HTTPS UI (optional)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # Access Docker daemon
+      - portainer_data:/data                       # Persistent data storage
+
+    networks:
+      - portainer
+
+volumes:
+  portainer_data:
+
+networks:
+  portainer:
+    driver: bridge
