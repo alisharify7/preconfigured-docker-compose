@@ -11,6 +11,8 @@ services:
     container_name: gitlab
     restart: always
     hostname: 'gitlab.local'
+    env_file:
+      - .env
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://localhost:8929'

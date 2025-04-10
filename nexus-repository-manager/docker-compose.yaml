@@ -18,6 +18,8 @@ services:
       - nexus-data:/nexus-data
     networks:
       - nexus-net
+    env_file:
+      - .env
 
 volumes:
   nexus-data:
