@@ -1,0 +1,27 @@
+#
+#  * mysql
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+
+services:
+  nexus:
+    image: sonatype/nexus3:${NEXUS_TAG_VERSION:-latest}
+    container_name: nexus
+    hostname: nexus
+    ports:
+      - "8081:8081"
+    restart: always
+    volumes:
+      - nexus-data:/nexus-data
+    networks:
+      - nexus-net
+
+volumes:
+  nexus-data:
+
+networks:
+  nexus-net:
+    driver: bridge
