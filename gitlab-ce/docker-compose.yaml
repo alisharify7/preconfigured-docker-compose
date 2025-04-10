@@ -1,0 +1,26 @@
+#
+#  * Gitlab ce
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:${GITLAB_TAG_VERSION-:latest}
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.local'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost:8929'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+    ports:
+      - '8929:80'        # web interface
+      - '443:443'        # HTTPS (optional)
+      - '2224:22'        # SSH (optional)
+    volumes:
+      - './config:/etc/gitlab'
+      - './logs:/var/log/gitlab'
+      - './data:/var/opt/gitlab'
+
