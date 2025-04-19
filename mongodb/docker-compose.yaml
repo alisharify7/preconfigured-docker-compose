@@ -1,0 +1,34 @@
+#
+#  * mongodb 
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+services:
+  mongo:
+    image: "mongo:${MONGO_DB_TAG:-latest}"
+    container_name: mongo
+    hostname: mongo
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME:-username}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD:-password}
+    command:
+      - --bind_ip_all
+      - --auth
+    env_file:
+      - .env # use .env.sample for base env file
+    networks:
+      - internal_proxy
+
+
+volumes:
+  mongo_data:
+
+networks:
+  internal_proxy:
