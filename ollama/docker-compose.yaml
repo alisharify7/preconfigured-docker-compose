@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: always
+    environment:
+      - OLLAMA_API_KEY=your_api_key
+      - OLLAMA_ENV=production
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data:/var/lib/ollama
+    networks:
+      - ollama_network
+
+networks:
+  ollama_network:
+    driver: bridge

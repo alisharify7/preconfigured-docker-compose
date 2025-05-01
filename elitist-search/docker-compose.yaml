@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  elitist-search:
+    image: elitist/search:latest
+    container_name: elitist-search
+    restart: always
+    environment:
+      - ELITIST_SEARCH_API_KEY=your_api_key
+      - ELITIST_SEARCH_ENV=production
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/var/lib/elitist-search
+    networks:
+      - elitist_search_network
+
+networks:
+  elitist_search_network:
+    driver: bridge

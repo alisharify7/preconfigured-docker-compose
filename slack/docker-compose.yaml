@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  slack:
+    image: slack/slack:latest
+    container_name: slack
+    restart: always
+    environment:
+      - SLACK_API_KEY=your_api_key
+      - SLACK_ENV=production
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./data:/var/lib/slack
+    networks:
+      - slack_network
+
+networks:
+  slack_network:
+    driver: bridge

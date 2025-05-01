@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  notion:
+    image: notion/notion:latest
+    container_name: notion
+    restart: always
+    environment:
+      - NOTION_API_KEY=your_api_key
+      - NOTION_ENV=production
+    ports:
+      - "7000:7000"
+    volumes:
+      - ./data:/var/lib/notion
+    networks:
+      - notion_network
+
+networks:
+  notion_network:
+    driver: bridge
