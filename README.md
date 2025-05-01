@@ -1,30 +1,79 @@
-# Docker Compose Collection 🐳
+# 🐳 Awesome Docker Compose Stack
 <img src="./docs/docker.avif">
 
 Welcome to the **Docker Compose Collection** repository! This repository contains a set of preconfigured Docker Compose files to help you quickly spin up various services with minimal effort. Whether you're developing locally, testing, or deploying services, these configurations are designed to save you time and hassle.
 
+A curated collection of **Docker Compose** configurations for popular self-hosted services.
 
-## 📦 **What's Inside?**
+---
 
-This repository includes Docker Compose configurations for the following services:
+## 📦 What's Inside?
 
-- **Database Services**:
-  - Redis / redis ui
-  - Mysql
-  - Postgres / Pgadmin4 
-- **Web Servers / Gateway**:
-  - Nginx + manager UI
-  - Kong Gateway
-- **Development Tools**:
-    -   
-- **Message Brokers**:
-  - Redis + redisUI
-  - Mosquitto MQTT
-  - RabbitMQ
-- **Monitoring & Logging**:
-  - teleport
-- **Other Services**:
-  - Jira Atlasian
+
+### 🗄️ Database Services
+- **MySQL**
+- **PostgreSQL + pgAdmin**
+- **MongoDB**
+- **SQL Server**
+
+---
+
+### 🧰 Development Tools
+- **Portainer** – Docker management UI  
+- **Nexus Repository Manager** – Binary artifact repository  
+- **GitLab CE** – Self-hosted Git server  
+- **Jira (Atlassian)** – Project management tool  
+- **n8n** – Workflow automation platform  
+
+---
+
+### 📡 Message Brokers
+- **RabbitMQ**
+- **Redis + Redis UI**
+- **Mosquitto MQTT**
+
+---
+
+### 🌐 Web Servers / API Gateways
+- **NGINX + NGINX Proxy Manager**
+- **Kong Gateway**
+
+---
+
+### 📊 Monitoring & Logging
+- **Grafana** – Metrics visualization
+- **Prometheus** – Time-series monitoring
+- **Sentry** – Error tracking
+- **Teleport** – Secure access to infrastructure
+
+---
+
+### 💬 Communication Tools
+- **Rocket.Chat** – Team chat and collaboration
+- **Slack** – Team communication and collaboration
+
+---
+
+### 🧠 AI and Machine Learning
+- **Ollama** – Large-scale AI model deployment
+- **Deepseek AI** – AI-powered search features
+
+---
+
+### 📋 Workflow Orchestration
+- **Airflow** – Workflow orchestration
+
+---
+
+### 🔍 Search
+- **Elitist Search** – Advanced search capabilities
+
+---
+
+### 📝 Collaboration and Knowledge Management
+- **Notion** – Enhanced collaboration and knowledge management
+
+---
 
 Each service is preconfigured with sensible defaults, making it easy to get started.
 
@@ -39,7 +88,6 @@ Before using these Docker Compose files, ensure you have the following installed
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ---
-
 
 ## 🛠 **Customization**
 
