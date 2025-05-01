@@ -14,8 +14,6 @@ services:
       - ./data:/var/lib/elitist-search
     networks:
       - elitist_search_network
-    env_file:
-      - .env
 
 networks:
   elitist_search_network:

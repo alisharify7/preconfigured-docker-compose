@@ -14,8 +14,6 @@ services:
       - ./data:/var/lib/notion
     networks:
       - notion_network
-    env_file:
-      - .env
 
 networks:
   notion_network:

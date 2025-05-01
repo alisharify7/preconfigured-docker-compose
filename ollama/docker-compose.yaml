@@ -14,8 +14,6 @@ services:
       - ./data:/var/lib/ollama
     networks:
       - ollama_network
-    env_file:
-      - .env
 
 networks:
   ollama_network:

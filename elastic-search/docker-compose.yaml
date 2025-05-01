@@ -1,23 +1,21 @@
 version: '3.8'
 
 services:
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
-    container_name: elasticsearch
+  elastic-search:
+    image: elasticsearch:latest
+    container_name: elastic-search
     restart: always
     environment:
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
     ports:
       - "9200:9200"
+      - "9300:9300"
     volumes:
-      - es_data:/usr/share/elasticsearch/data
+      - ./data:/usr/share/elasticsearch/data
     networks:
-      - es_network
-
-volumes:
-  es_data:
+      - elastic_search_network
 
 networks:
-  es_network:
+  elastic_search_network:
     driver: bridge
