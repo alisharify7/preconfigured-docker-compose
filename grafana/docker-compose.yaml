@@ -1,19 +1,27 @@
-version: '3.8'
+#
+#  * grafana
+#  * author: @hootanht
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
 services:
   grafana:
-    image: grafana/grafana:latest
+    image: "grafana/grafana:${GRAFANA_TAG_VERSION}"
     container_name: grafana
+    hostname: grafana
     restart: always
     ports:
       - "3000:3000"
     volumes:
       - grafana_data:/var/lib/grafana
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASS:-admin}
     networks:
       - grafana_network
+    env_file:
+      - .env
 
 volumes:
   grafana_data:
