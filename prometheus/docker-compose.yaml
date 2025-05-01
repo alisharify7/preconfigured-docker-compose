@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - prometheus_data:/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - prometheus_network
+
+volumes:
+  prometheus_data:
+
+networks:
+  prometheus_network:
+    driver: bridge

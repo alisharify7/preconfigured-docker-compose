@@ -23,8 +23,12 @@ This repository includes Docker Compose configurations for the following service
   - RabbitMQ
 - **Monitoring & Logging**:
   - teleport
+  - Grafana
+  - Prometheus
 - **Other Services**:
   - Jira Atlasian
+  - n8n
+  - Sentry
 
 Each service is preconfigured with sensible defaults, making it easy to get started.
 
@@ -39,7 +43,6 @@ Before using these Docker Compose files, ensure you have the following installed
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ---
-
 
 ## 🛠 **Customization**
 
