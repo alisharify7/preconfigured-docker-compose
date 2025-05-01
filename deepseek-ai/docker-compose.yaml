@@ -14,6 +14,8 @@ services:
       - ./data:/var/lib/deepseek-ai
     networks:
       - deepseek_ai_network
+    env_file:
+      - .env
 
 networks:
   deepseek_ai_network:

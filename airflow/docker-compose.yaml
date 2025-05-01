@@ -18,6 +18,8 @@ services:
       - ./plugins:/usr/local/airflow/plugins
     networks:
       - airflow_network
+    env_file:
+      - .env
 
 networks:
   airflow_network:

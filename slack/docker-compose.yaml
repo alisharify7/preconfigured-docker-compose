@@ -14,6 +14,8 @@ services:
       - ./data:/var/lib/slack
     networks:
       - slack_network
+    env_file:
+      - .env
 
 networks:
   slack_network:
