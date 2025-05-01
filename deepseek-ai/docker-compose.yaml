@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  deepseek-ai:
+    image: deepseek/ai:latest
+    container_name: deepseek-ai
+    restart: always
+    environment:
+      - DEEPSEEK_AI_API_KEY=your_api_key
+      - DEEPSEEK_AI_ENV=production
+    ports:
+      - "6000:6000"
+    volumes:
+      - ./data:/var/lib/deepseek-ai
+    networks:
+      - deepseek_ai_network
+
+networks:
+  deepseek_ai_network:
+    driver: bridge
