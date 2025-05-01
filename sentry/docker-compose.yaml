@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  sentry:
+    image: getsentry/sentry:latest
+    container_name: sentry
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - sentry_data:/var/lib/sentry
+    environment:
+      - SENTRY_USER=${SENTRY_USER:-admin}
+      - SENTRY_PASSWORD=${SENTRY_PASSWORD:-admin}
+    networks:
+      - sentry_network
+
+volumes:
+  sentry_data:
+
+networks:
+  sentry_network:
+    driver: bridge
