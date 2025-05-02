@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  elastic-search:
+    image: elasticsearch:latest
+    container_name: elastic-search
+    restart: always
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
+    networks:
+      - elastic_search_network
+
+networks:
+  elastic_search_network:
+    driver: bridge

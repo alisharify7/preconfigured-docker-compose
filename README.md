@@ -50,9 +50,30 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 
 ### 💬 Communication Tools
 - **Rocket.Chat** – Team chat and collaboration
+- **Slack** – Team communication and collaboration
 
 ---
 
+### 🧠 AI and Machine Learning
+- **Ollama** – Large-scale AI model deployment
+- **Deepseek AI** – AI-powered search features
+
+---
+
+### 📋 Workflow Orchestration
+- **Airflow** – Workflow orchestration
+
+---
+
+### 🔍 Search
+- **Elitist Search** – Advanced search capabilities
+
+---
+
+### 📝 Collaboration and Knowledge Management
+- **Notion** – Enhanced collaboration and knowledge management
+
+---
 
 Each service is preconfigured with sensible defaults, making it easy to get started.
 

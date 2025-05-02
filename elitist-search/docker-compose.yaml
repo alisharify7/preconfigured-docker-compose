@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   elitist-search:
-    image: elitist/search:latest
-    container_name: elitist-search
+    image: elastic/search:latest
+    container_name: elastic-search
     restart: always
     environment:
       - ELITIST_SEARCH_API_KEY=your_api_key
