@@ -9,12 +9,19 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 
 ## 📦 What's Inside?
 
-### 🗄️ [Database Services](./database/)
+### 🗄️ [Database Services - Storage Solution](./database/)
 - [MySQL](./database/mysql)
 - [PostgreSQL + pgAdmin](./database/postgres-pgadmin)
 - [MongoDB](./database/mongodb)
 - [SQL Server](./database/sqlserver)
 - [Redis + Redis UI](./database/redis-redisUI)
+- [Minio](./database/minio/)
+
+---
+
+### 🔒 [Auth/Security](./auth//)
+- [Keycloak](./auth/keycloak/)
+
 
 ---
 
