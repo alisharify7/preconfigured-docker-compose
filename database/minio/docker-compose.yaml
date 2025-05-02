@@ -1,0 +1,31 @@
+#
+#  * minio
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+services:
+  minio:
+    image: minio/minio:${MINIO_TAG:-latest}
+    container_name: minio
+    hostname: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+      - minio_config:/root/.minio
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+    command: server /data --console-address ":9001"
+    networks:
+      - minio_network
+
+volumes:
+  minio_data:
+  minio_config:
+
+networks:
+  minio_network:
