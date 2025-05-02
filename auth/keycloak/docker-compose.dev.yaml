@@ -1,0 +1,32 @@
+#
+#  * Keycloak Development
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+version: '3.8'
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    restart: always
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      - KEYCLOAK_USER=${KEYCLOAK_USER:-admin}
+      - KEYCLOAK_PASSWORD=${KEYCLOAK_PASSWORD:-admin}
+      - DB_VENDOR=${DB_VENDOR:-h2}
+      - DB_ADDR=${DB_ADDR:-localhost}
+      - DB_DATABASE=${DB_DATABASE:-keycloak}
+      - DB_USER=${DB_USER:-keycloak}
+      - DB_PASSWORD=${DB_PASSWORD:-password}
+    volumes:
+      - keycloak_data:/opt/jboss/keycloak/standalone/data
+    env_file:
+      - .env
+
+volumes:
+  keycloak_data:
