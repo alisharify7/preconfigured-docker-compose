@@ -9,53 +9,52 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 
 ## 📦 What's Inside?
 
-
-### 🗄️ Database Services
-- **MySQL**
-- **PostgreSQL + pgAdmin**
-- **MongoDB**
-- **SQL Server**
-
----
-
-### 🧰 Development Tools
-- **Portainer** – Docker management UI  
-- **Nexus Repository Manager** – Binary artifact repository  
-- **GitLab CE** – Self-hosted Git server  
-- **Jira (Atlassian)** – Project management tool  
-- **n8n** – Workflow automation platform  
+### 🗄️ [Database Services](./database/)
+- [MySQL](./database/mysql)
+- [PostgreSQL + pgAdmin](./database/postgres-pgadmin)
+- [MongoDB](./database/mongodb)
+- [SQL Server](./database/sqlserver)
+- [Redis + Redis UI](./database/redis-redisUI)
 
 ---
 
-### 📡 Message Brokers
-- **RabbitMQ**
-- **Redis + Redis UI**
-- **Mosquitto MQTT**
+### 🧰 [Development Tools](./dev-tools/)
+- [Portainer](./dev-tools/portainer) – Docker management UI  
+- [Nexus Repository Manager](./dev-tools/nexus-repository-manager) – Binary artifact repository  
+- [GitLab CE](./dev-tools/gitlab-ce) – Self-hosted Git server  
+- [Jira (Atlassian)](./dev-tools/jira-atlasian) – Project management tool  
+- [n8n](./dev-tools/n8n) – Workflow automation platform  
 
 ---
 
-### 🌐 Web Servers / API Gateways
-- **NGINX + NGINX Proxy Manager**
-- **Kong Gateway**
+### 📡 [Message Brokers](./messaging/)
+- [RabbitMQ](./messaging/rabbitmq)
+- [Mosquitto MQTT](./messaging/mosquitto)
 
 ---
 
-### 📊 Monitoring & Logging
-- **Grafana** – Metrics visualization
-- **Prometheus** – Time-series monitoring
-- **Sentry** – Error tracking
-- **Teleport** – Secure access to infrastructure
+### 🌐 [Web Servers / API Gateways](./gateway/)
+- [NGINX + NGINX Proxy Manager](./gateway/nginx-proxy-manager)
+- [Kong Gateway](./gateway/kong-gateway)
 
 ---
 
-### 💬 Communication Tools
-- **Rocket.Chat** – Team chat and collaboration
+### 📊 [Monitoring & Logging](./monitoring/)
+- [Grafana](./monitoring/grafana) – Metrics visualization
+- [Prometheus](./monitoring/prometheus) – Time-series monitoring
+- [Sentry](./monitoring/sentry) – Error tracking
+- [Teleport](./monitoring/teleport) – Secure access to infrastructure
 
 ---
 
+### 💬 [Communication Tools](./messaging/)
+- [Rocket.Chat](./messaging/rocket-chat) – Team chat and collaboration
+
+---
 
 Each service is preconfigured with sensible defaults, making it easy to get started.
 
+---
 
 ## 🚀 **Getting Started**
 
