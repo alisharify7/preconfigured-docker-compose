@@ -1,0 +1,29 @@
+#
+#  * prometheus
+#  * author: @hootanht
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+services:
+  prometheus:
+    image: prom/prometheus:${PROMETHEUS_TAG_VERSION:-latest}
+    container_name: prometheus
+    hostname: prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - prometheus_data:/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - prometheus_network
+    env_file:
+      - .env
+
+volumes:
+  prometheus_data:
+
+networks:
+  prometheus_network:
+    driver: bridge
