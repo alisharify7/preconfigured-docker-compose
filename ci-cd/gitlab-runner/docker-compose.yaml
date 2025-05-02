@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  gitlab-runner:
+    image: gitlab/gitlab-runner:latest
+    container_name: gitlab-runner
+    restart: always
+    volumes:
+      - './config:/etc/gitlab-runner'
+      - './data:/home/gitlab-runner'
+    ports:
+      - '8093:8093'
+    environment:
+      - 'CI_SERVER_URL=${CI_SERVER_URL}'
+      - 'REGISTRATION_TOKEN=${REGISTRATION_TOKEN}'
+      - 'RUNNER_EXECUTOR=${RUNNER_EXECUTOR}'
+      - 'RUNNER_NAME=${RUNNER_NAME}'
+      - 'RUNNER_TAG_LIST=${RUNNER_TAG_LIST}'
+      - 'RUNNER_LIMIT=${RUNNER_LIMIT}'
+      - 'RUNNER_REQUEST_CONCURRENCY=${RUNNER_REQUEST_CONCURRENCY}'
+      - 'RUNNER_OUTPUT_LIMIT=${RUNNER_OUTPUT_LIMIT}'
+    env_file:
+      - .env
