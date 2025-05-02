@@ -5,28 +5,51 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
-version: '3.8'
-
+# TODO: add ssl support for prod, enable/disable config
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
-    container_name: keycloak
+    image: quay.io/keycloak/keycloak:${KEYCLOAK_TAG_VERSION}
+    container_name: ${KEYCLOAK_CONTAINER_NAME:-keycloak}
+    hostname: ${KEYCLOAK_HOSTNAME:-keycloak}
     restart: always
+    command: start --optimized
     ports:
-      - "8080:8080"
-      - "8443:8443"
+      - "${KEYCLOAK_HTTP_PORT:-8080}:8080"
+      - "${KEYCLOAK_HTTPS_PORT:-8443}:8443"
     environment:
-      - KEYCLOAK_USER=${KEYCLOAK_USER:-admin}
-      - KEYCLOAK_PASSWORD=${KEYCLOAK_PASSWORD:-admin}
-      - DB_VENDOR=${DB_VENDOR:-postgres}
-      - DB_ADDR=${DB_ADDR:-db}
-      - DB_DATABASE=${DB_DATABASE:-keycloak}
-      - DB_USER=${DB_USER:-keycloak}
-      - DB_PASSWORD=${DB_PASSWORD:-password}
+      - KC_DB=${KC_DB:-postgres}
+      - KC_DB_URL=jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+      - KC_DB_USERNAME=${DB_USER}
+      - KC_DB_PASSWORD=${DB_PASSWORD}
+      - KEYCLOAK_ADMIN=${KEYCLOAK_USER}
+      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_PASSWORD}
     volumes:
-      - keycloak_data:/opt/jboss/keycloak/standalone/data
+      - keycloak_data:/opt/keycloak/data
     env_file:
       - .env
+    depends_on:
+      - postgres
+    networks:
+      - internal_proxy
+
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-15}
+    container_name: ${POSTGRES_CONTAINER_NAME:-keycloak_postgres}
+    restart: always
+    environment:
+      POSTGRES_DB=${DB_NAME}
+      POSTGRES_USER=${DB_USER}
+      POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - internal_proxy
 
 volumes:
   keycloak_data:
+  postgres_data:
+
+networks:
+  internal_proxy:
