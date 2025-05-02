@@ -5,12 +5,11 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
-version: '3.8'
-
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    image: quay.io/keycloak/keycloak:${KEYCLOAK_TAG_VERSION:-latest}
     container_name: keycloak
+    hostname: keycloak
     restart: always
     ports:
       - "8080:8080"
@@ -27,6 +26,11 @@ services:
       - keycloak_data:/opt/jboss/keycloak/standalone/data
     env_file:
       - .env
+    networks:
+      - internal_proxy
 
 volumes:
   keycloak_data:
+
+networks:
+  internal_proxy:
