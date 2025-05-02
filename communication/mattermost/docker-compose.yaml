@@ -1,0 +1,62 @@
+version: '3'
+
+# 
+#  * Mattermost (Slack Alternative)
+#  * author: @hootanht
+#  * Under GPL-3.0 license.
+#  * email: hootanhemmati@outlook.com
+#  * read more at repo: https://github.com/hootanht/preconfigured-docker-compose
+
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: mattermost-postgres
+    restart: unless-stopped    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-mmuser}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-mmuser_password}
+      - POSTGRES_DB=${POSTGRES_DB:-mattermost}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mattermost
+
+  mattermost:
+    image: mattermost/mattermost-team-edition:latest
+    container_name: mattermost
+    depends_on:
+      - postgres    environment:
+      - MM_USERNAME=${MM_USERNAME:-mmuser}
+      - MM_PASSWORD=${MM_PASSWORD:-mmuser_password}
+      - MM_DBNAME=${MM_DBNAME:-mattermost}
+      - MM_SQLSETTINGS_DRIVERNAME=${MM_SQLSETTINGS_DRIVERNAME:-postgres}
+      - MM_SQLSETTINGS_DATASOURCE=postgres://${MM_USERNAME:-mmuser}:${MM_PASSWORD:-mmuser_password}@postgres:5432/${MM_DBNAME:-mattermost}?sslmode=disable
+    volumes:
+      - mattermost_data:/mattermost/data
+      - mattermost_logs:/mattermost/logs
+      - mattermost_config:/mattermost/config
+      - mattermost_plugins:/mattermost/plugins
+      - mattermost_client_plugins:/mattermost/client/plugins
+    ports:
+      - "8065:8065"
+    restart: unless-stopped
+    networks:
+      - mattermost
+
+volumes:
+  postgres_data:
+    name: mattermost-postgres-data
+  mattermost_data:
+    name: mattermost-data
+  mattermost_logs:
+    name: mattermost-logs
+  mattermost_config:
+    name: mattermost-config
+  mattermost_plugins:
+    name: mattermost-plugins
+  mattermost_client_plugins:
+    name: mattermost-client-plugins
+
+networks:
+  mattermost:
+    name: mattermost-network

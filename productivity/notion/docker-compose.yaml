@@ -1,0 +1,44 @@
+version: "3"
+
+#
+#  * AppFlowy (Notion Alternative)
+#  * author: @hootanht
+#  * Under GPL-3.0 license.
+#  * email: hootanhemmati@outlook.com
+#  * read more at repo: https://github.com/hootanht/preconfigured-docker-compose
+
+services:
+  appflowy-cloud:
+    image: appflowy/appflowy-cloud:latest
+    container_name: notion-alternative
+    restart: unless-stopped
+    ports:
+      - "8100:8100"
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgres://postgres:password@postgres-appflowy:5432/appflowy}
+      - RUST_LOG=${RUST_LOG:-info}
+    depends_on:
+      postgres-appflowy:
+        condition: service_healthy
+
+  postgres-appflowy:
+    image: postgres:15
+    container_name: postgres-appflowy
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
+      - POSTGRES_DB=${POSTGRES_DB:-appflowy}
+    volumes:
+      - postgres_appflowy_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_appflowy_data:
+    name: postgres_appflowy_data
