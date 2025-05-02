@@ -81,3 +81,9 @@ Each Docker Compose file is designed to be easily customizable. You can modify t
 - **Environment Variables**: Edit the `.env` file or directly modify the `environment` section in the `docker-compose.yml` file.
 - **Ports**: Change the port mappings in the `ports` section to avoid conflicts or match your requirements.
 - **Volumes**: Adjust the volume mappings to persist data or use specific directories on your host machine.
+
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=alisharify7/preconfigured-docker-compose&type=Date)](https://www.star-history.com/#alisharify7/preconfigured-docker-compose&Date)
