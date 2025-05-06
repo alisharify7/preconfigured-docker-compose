@@ -1,9 +1,16 @@
-version: '3'
+#
+#  * Gitlab Runner
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
 
 services:
   gitlab-runner:
-    image: gitlab/gitlab-runner:latest
+    image: gitlab/gitlab-runner:${GITLAB-RUNNER-TAG:-latest}
     container_name: gitlab-runner
+    hostname: gitlab-runner
     restart: always
     volumes:
       - './config:/etc/gitlab-runner'
