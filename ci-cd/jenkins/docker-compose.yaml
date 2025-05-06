@@ -1,0 +1,21 @@
+#
+#  * Jenkins
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+services:
+  jenkins:
+    image: jenkins/jenkins:${VERSION:-lts}
+    container_name: jenkins
+    hostname: jenkins
+    ports:
+      - "${JENKINS_PORT:-8080}:8080"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+    env_file:
+      - .env
+
+volumes:
+  jenkins_data:
