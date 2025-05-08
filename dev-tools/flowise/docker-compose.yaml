@@ -1,0 +1,35 @@
+#
+#  * n8n ai agent server
+#  * author: @hootanht
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+version: '3.8'
+
+services:
+  flowise:
+    image: flowiseai/flowise:latest
+    container_name: flowise
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/database
+      - ./apikeys:/app/apikeys
+      - ./secrets:/app/secrets
+      - ./logs:/app/logs
+    networks:
+      - flowise-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${PORT:-3000}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+networks:
+  flowise-network:
+    driver: bridge
