@@ -1,0 +1,31 @@
+version: '3'
+
+# 
+#  * Ollama
+#  * author: @hootanht
+#  * Under GPL-3.0 license.
+#  * email: hootanhemmati@outlook.com
+#  * read more at repo: https://github.com/hootanht/preconfigured-docker-compose
+
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: unless-stopped    environment:
+      - OLLAMA_HOST=${OLLAMA_HOST:-0.0.0.0}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  ollama_data:
+    name: ollama_data
