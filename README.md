@@ -22,6 +22,13 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 ### 🔒 [Auth/Security](./auth//)
 - [Keycloak](./auth/keycloak/)
 
+---
+
+### 🔒 [AI / AI agent](./ai/)
+- [DeepSeek](./ai/deepseek/)
+- [Ollama](./ai/ollama//)
+- [Flowise](./ai/flowise/) – Workflow automation platform  
+- [n8n](./ai/n8n) – Workflow automation platform  
 
 ---
 
@@ -30,7 +37,7 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 - [Nexus Repository Manager](./dev-tools/nexus-repository-manager) – Binary artifact repository  
 - [GitLab CE](./dev-tools/gitlab-ce) – Self-hosted Git server  
 - [Jira (Atlassian)](./dev-tools/jira-atlasian) – Project management tool  
-- [n8n](./dev-tools/n8n) – Workflow automation platform  
+
 
 ---
 
@@ -56,6 +63,7 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 
 ### 💬 [Communication Tools](./messaging/)
 - [Rocket.Chat](./messaging/rocket-chat) – Team chat and collaboration
+- [MatterMost](./messaging/mattermost/) – Team chat and collaboration
 
 ---
 
