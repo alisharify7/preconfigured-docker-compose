@@ -19,7 +19,7 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 
 ---
 
-### 🔒 [Auth/Security](./auth//)
+### 🔒 [Auth/Security](./auth/)
 - [Keycloak](./auth/keycloak/)
 
 ---
@@ -35,7 +35,10 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 ### 🧰 [Development Tools](./dev-tools/)
 - [Portainer](./dev-tools/portainer) – Docker management UI  
 - [Nexus Repository Manager](./dev-tools/nexus-repository-manager) – Binary artifact repository  
-- [GitLab CE](./dev-tools/gitlab-ce) – Self-hosted Git server  
+- [GitLab CE](./ci-cd//gitlab-ce/) – Self-hosted Git server  
+- [GitLab Runner](./ci-cd/gitlab-runner/) – gitlab runner for Self-hosted Git server  
+- [Jenkins](./ci-cd/jenkins/) – CI CD - open source automation server    
+
 - [Jira (Atlassian)](./dev-tools/jira-atlasian) – Project management tool  
 
 
