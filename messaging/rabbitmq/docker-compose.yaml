@@ -1,0 +1,30 @@
+#
+#  * Airflow
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/hootanht/preconfigured-docker-compose
+
+services:
+  rabbitmq:
+    image: rabbitmq:${RABBITMQ_TAG:-3-management}
+    container_name: rabbitmq
+    hostname: rabbitmq
+    ports:
+      - "${RABBITMQ_PORT:-5672}:5672"
+      - "${RABBITMQ_MANAGEMENT_PORT:-15672}:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - internal_proxy
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER:-guest}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS:-guest}
+    envs:
+      - .env
+
+volumes:
+  rabbitmq_data:
+
+networks:
+  internal_proxy:
