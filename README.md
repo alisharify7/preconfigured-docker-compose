@@ -43,9 +43,11 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 
 ---
 
-### 📡 [Message Brokers](./messaging/)
-- [RabbitMQ](./messaging/rabbitmq)
-- [Mosquitto MQTT](./messaging/mosquitto)
+### 📡 [Message Brokers/Comminucations](./messaging/)
+- [RabbitMQ](./messaging/rabbitmq/) Message Broker
+- [Mosquitto MQTT](./messaging/mosquitto) MQTT Message Broker
+- [Rocket.Chat](./messaging/rocket-chat) – Team chat and collaboration
+- [MatterMost](./messaging/mattermost/) – Team chat and collaboration
 
 ---
 
@@ -63,11 +65,6 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 
 ---
 
-### 💬 [Communication Tools](./messaging/)
-- [Rocket.Chat](./messaging/rocket-chat) – Team chat and collaboration
-- [MatterMost](./messaging/mattermost/) – Team chat and collaboration
-
----
 
 Each service is preconfigured with sensible defaults, making it easy to get started.
 
