@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  jupyter:
+    image: jupyter/base-notebook
+    container_name: jupyter
+    restart: always
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN:-mytoken}
+      - JUPYTER_PASSWORD=${JUPYTER_PASSWORD:-mypassword}
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    networks:
+      - jupyter_network
+
+volumes:
+  jupyter_data:
+
+networks:
+  jupyter_network:
+    driver: bridge
