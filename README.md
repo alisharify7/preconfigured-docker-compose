@@ -25,8 +25,8 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 ---
 
 ### 🔒 [AI / AI agent](./ai/)
-- [DeepSeek](./ai/deepseek/)
-- [Ollama](./ai/ollama//)
+- [DeepSeek](./ai/deepseek/) - Open Source LLM
+- [Ollama](./ai/ollama/) - Locally deployed AI model runner
 - [Flowise](./ai/flowise/) – Workflow automation platform  
 - [n8n](./ai/n8n) – Workflow automation platform  
 
@@ -38,7 +38,6 @@ A curated collection of **Docker Compose** configurations for popular self-hoste
 - [GitLab CE](./ci-cd//gitlab-ce/) – Self-hosted Git server  
 - [GitLab Runner](./ci-cd/gitlab-runner/) – gitlab runner for Self-hosted Git server  
 - [Jenkins](./ci-cd/jenkins/) – CI CD - open source automation server    
-
 - [Jira (Atlassian)](./dev-tools/jira-atlasian) – Project management tool  
 
 
