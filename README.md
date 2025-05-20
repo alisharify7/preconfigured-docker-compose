@@ -93,4 +93,4 @@ Each Docker Compose file is designed to be easily customizable. You can modify t
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=alisharify7/preconfigured-docker-compose&type=Date)](https://www.star-history.com/#alisharify7/preconfigured-docker-compose&Date)
+[![Stargazers over time](https://starchart.cc/alisharify7/preconfigured-docker-compose.svg?variant=adaptive)](https://starchart.cc/alisharify7/preconfigured-docker-compose)
