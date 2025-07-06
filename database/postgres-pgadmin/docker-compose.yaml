@@ -20,6 +20,8 @@ services:
       - pg-data:/var/lib/postgresql/data/
     env_file:
       - .env
+    ports:
+      - "${POSTGRES_PORT:-5432}:${POSTGRES_PORT:-5432}" # replace with .env
 
   postgres_pgadmin:
     image: 'docker.io/dpage/pgadmin4:${PGADMIN_TAG_VERSION:-latest}' # replace latest
@@ -35,6 +37,8 @@ services:
       - pgadmin-data:/var/lib/pgadmin/
     env_file:
       - .env
+    ports:
+      - "${PGADMIN_PORT:-8080}:80" # replace with .env
 volumes:
   pg-data:
   pgadmin-data:
