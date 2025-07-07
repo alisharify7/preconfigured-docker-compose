@@ -13,12 +13,6 @@ A curated collection of Docker Compose files for self-hosting essential services
 
 ---
 
-# 🧱 Self-Hosted Infrastructure Stack
-
-A curated collection of Docker Compose files for self-hosting essential services including databases, authentication, AI, monitoring, development tools, messaging, and more.
-
----
-
 ## 📦 What's Inside?
 
 ### 🗄️ [Database Services - Storage Solutions](./database/)
