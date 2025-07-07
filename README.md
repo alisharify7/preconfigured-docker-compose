@@ -135,3 +135,13 @@ Each Docker Compose file is designed to be easily customizable. You can modify t
 ## Star History
 
 [![Stargazers over time](https://starchart.cc/alisharify7/preconfigured-docker-compose.svg?variant=adaptive)](https://starchart.cc/alisharify7/preconfigured-docker-compose)
+
+
+
+## 🙌 Special Thanks to All Contributors
+
+A heartfelt thank you to all the amazing people who have contributed to this project! Your support, ideas, and code help make it better every day.
+
+<a href="https://github.com/alisharify7/preconfigured-docker-compose/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=alisharify7/preconfigured-docker-compose" />
+</a>
