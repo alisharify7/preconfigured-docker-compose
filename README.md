@@ -145,3 +145,8 @@ A heartfelt thank you to all the amazing people who have contributed to this pro
 <a href="https://github.com/alisharify7/preconfigured-docker-compose/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=alisharify7/preconfigured-docker-compose" />
 </a>
+
+
+
+@alisharify7
+@huhootanht
