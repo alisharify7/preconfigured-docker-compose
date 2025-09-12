@@ -10,6 +10,7 @@ services:
     image: minio/minio:${MINIO_TAG:-latest}
     container_name: minio
     hostname: minio
+    restart: always
     ports:
       - "9000:9000"
       - "9001:9001"
