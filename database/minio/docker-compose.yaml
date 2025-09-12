@@ -22,6 +22,8 @@ services:
     command: server /data --console-address ":9001"
     networks:
       - minio_network
+    env_file:
+      - .env
 
 volumes:
   minio_data:
