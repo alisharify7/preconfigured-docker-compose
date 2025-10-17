@@ -8,7 +8,7 @@
 
 services:
   postgres_database:
-    image: 'docker.io/postgres:${POSTGRES_TAG_VERSION:-latest}' # replace latest
+    image: 'postgres:${POSTGRES_TAG_VERSION:-latest}' # replace latest
     container_name: postgres_db
     hostname: postgres_db
     restart: always
@@ -24,7 +24,7 @@ services:
       - "${POSTGRES_PORT:-5432}:${POSTGRES_PORT:-5432}" # replace with .env
 
   postgres_pgadmin:
-    image: 'docker.io/dpage/pgadmin4:${PGADMIN_TAG_VERSION:-latest}' # replace latest
+    image: 'dpage/pgadmin4:${PGADMIN_TAG_VERSION:-latest}' # replace latest
     container_name: postgres_pgadmin
     hostname: postgres_pgadmin
     restart: always
