@@ -5,11 +5,11 @@
 #  * email: alisharifyofficial@gmail.com
 #  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
 
-# DOc https://docs.goauthentik.io/docs/install-config/install/docker-compose
+# Doc https://docs.goauthentik.io/docs/install-config/install/docker-compose
 
 services:
   postgresql:
-    image: docker.io/library/postgres:16-alpine
+    image: 'docker.io/library/postgres:${PG_VERSION:-latest}'
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
@@ -26,7 +26,7 @@ services:
     env_file:
       - .env
   redis:
-    image: docker.io/library/redis:alpine
+    image: 'docker.io/library/redis:${REDIS_VERSION:-latest}'
     command: --save 60 1 --loglevel warning
     restart: unless-stopped
     healthcheck:
