@@ -1,0 +1,27 @@
+#
+#  * Elitist Search
+#  * author: @alisharify7
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+services:
+  elitist-search:
+    image: elitist-search:latest
+    container_name: elitist-search
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - DATA_DIR=/data
+    volumes:
+      - elitist_search_data:/data
+    networks:
+      - elitist_network
+
+volumes:
+  elitist_search_data:
+
+networks:
+  elitist_network:
+    driver: bridge
