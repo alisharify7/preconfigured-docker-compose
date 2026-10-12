@@ -1,0 +1,22 @@
+#
+#  * solidping
+#  * author: @fclairamb
+#  * Under GPL-3.0 license.
+#  * email: alisharifyofficial@gmail.com
+#  * read more at repo: https://github.com/alisharify7/preconfigured-docker-compose
+
+services:
+  solidping:
+    image: ghcr.io/fclairamb/solidping:${SOLIDPING_VERSION:-latest}
+    container_name: solidping
+    hostname: solidping
+    restart: always
+    ports:
+      - "${SOLIDPING_PORT:-4000}:4000"
+    environment:
+      - SP_BASE_URL=${SOLIDPING_BASE_URL:-http://localhost:4000}
+    volumes:
+      - solidping-data:/data
+
+volumes:
+  solidping-data:
