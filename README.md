@@ -71,6 +71,7 @@ A curated collection of Docker Compose files for self-hosting essential services
 ### 📊 [Monitoring & Telemetry](./monitoring/)
 - [Grafana](./monitoring/grafana) – Metrics & dashboard visualization
 - [Prometheus](./monitoring/prometheus) – Metrics collection & alerting
+- [SolidPing](./monitoring/solidping) – Uptime and synthetic monitoring with status pages and alerts
 - [Teleport](./monitoring/teleport) – Secure infrastructure access
 - [Uptime Kuma](./monitoring/uptimeKUMA) – Uptime monitoring with alerts
 
